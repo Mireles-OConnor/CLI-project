@@ -2,7 +2,7 @@ import java.util.*;
 import java.nio.file.*;
 import java.io.*;
 
-public class ContactsManager {
+public class ContactsManager { Liam-Branch
     private static final String FILE_NAME = "contacts.txt";
     private static final Path PATH = Paths.get(FILE_NAME);
     private List<Contact> contacts;
@@ -116,5 +116,21 @@ public class ContactsManager {
         } catch (IOException e) {
             System.out.println("Could not save contacts.");
         }
+
+
+   public static void main(String[] args) {
+       Scanner scanner = new Scanner(System.in);
+       ContactList contactList = new ContactList();
+boolean exit = false;
+while(!exit) {
+       System.out.println("\n--- Contacts Manager ---");
+       System.out.println("1. View All Contacts");
+       System.out.println("2. Add New Contact");
+       System.out.println("3. Add New Contact");
+       System.out.println("4. Search Contact by Name");
+       System.out.println("0. Exit");
+
+    System.out.println("Enter your choice: ");
+ main
     }
 }
