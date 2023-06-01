@@ -129,7 +129,24 @@ public class ContactsManager {
         }
     }
 
+private static void displayNamesandPhomeNumbers(contactList contactList){
+                System.out.println("\n---Names and Phone Numbers--");
+                if (contactList.isEmpty()) {
+                    System.out.println("No contacts found");
+                }else {
+                    System.out.println("Name        | Phone Numbers");
+                    System.out.println("-------------|--------------");
+                    for (Contact contact : contactList.getAllContacts()) {
+                        String formattedPhoneNumber = formatPhoneNumber(contact.getPhoneNumber)
+                        System.out.printf("%-20s | %s%n", contact.getName(), formattedPhoneNumber);
+                    }
+                }
 
+                }
+            }
+
+
+    }
         private int showMenuOption() {
             Scanner scanner = new Scanner(System.in);
             boolean exit = false;
@@ -172,5 +189,3 @@ public class ContactsManager {
                 System.out.println("Deletion cancelled.");
             }
         }
-
-}
