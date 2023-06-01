@@ -2,7 +2,7 @@ import java.util.*;
 import java.nio.file.*;
 import java.io.*;
 
-public class ContactsManager { Liam-Branch
+public class ContactsManager {
     private static final String FILE_NAME = "contacts.txt";
     private static final Path PATH = Paths.get(FILE_NAME);
     private List<Contact> contacts;
@@ -40,14 +40,23 @@ public class ContactsManager { Liam-Branch
         do {
             option = showMenuOption();
             switch (option) {
-                case 1: showContacts(); break;
-                case 2: addContact(); break;
-                case 3: searchContact(); break;
-                case 4: deleteContact(); break;
+//                case 1:
+//                    showContacts();
+//                    break;
+                case 2:
+                    addContact();
+                    break;
+                case 3:
+                    searchContact();
+                    break;
+                case 4:
+                    deleteContact();
+                    break;
             }
         } while (option != 5);
         saveContacts();
     }
+
     private void addContact() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -61,7 +70,7 @@ public class ContactsManager { Liam-Branch
             }
             for (Contact contact : contacts) {
                 if (contact.getName().equalsIgnoreCase(name)) {
-                    System.out.println("There's already a contact named " + name + ". Do you want to overwrite it? (Yes/No)");
+                    System.out.println("Negative Ghost Rider, the contact is full. Do you want to overwrite it? (Yes/No)");
                     String answer = scanner.nextLine();
                     if (answer.equalsIgnoreCase("Yes")) {
                         contact.setPhoneNumber(phoneNumber);
@@ -80,6 +89,7 @@ public class ContactsManager { Liam-Branch
             return;
         }
     }
+
     private void searchContact() {
         System.out.println("Enter the name of the contact to search:");
         Scanner scanner = new Scanner(System.in);
@@ -106,6 +116,7 @@ public class ContactsManager { Liam-Branch
                 return null;
         }
     }
+
     private void saveContacts() {
         List<String> lines = new ArrayList<>();
         for (Contact contact : contacts) {
@@ -116,44 +127,50 @@ public class ContactsManager { Liam-Branch
         } catch (IOException e) {
             System.out.println("Could not save contacts.");
         }
-
-
-   public static void main(String[] args) {
-       Scanner scanner = new Scanner(System.in);
-       ContactList contactList = new ContactList();
-boolean exit = false;
-while(!exit) {
-    System.out.println("\n--- Contacts Manager ---");
-    System.out.println("1. View All Contacts");
-    System.out.println("2. Add New Contact");
-    System.out.println("3. Search Contact by Name");
-    System.out.println("4. Delete and existing contact");
-    System.out.println("0. Exit");
-
-    System.out.println("Enter your choice: ");
- mireles1
-
-
-    System.out.println("Name: " + contact.getName());
-    System.out.println("Phone:" + contact.getPhoneNumber());
-}else{
-           System.out.println("Contact Not Found..");
-       }
-
-
     }
-    private static void deleteContact(Scanner scanner, ContactList contactList){
-        System.out.println("\n---Delete Contact?---");
-        System.out.println("Enter name to delete: ");
-        System.out.println("Are you sure you want to delete?" + contact.getName());
-        String name = scanner.nexLine();
-        removed = contactList.deleteContactByName(contact.getName()); // check on this, it may be an error..**
-    } // if and else here to check the name is deleted
-if (removed)
 
-    {
-        System.out.println("Success");
-    }else{
-        System.out.println("Contact not found");
-    }
+
+        private int showMenuOption() {
+            Scanner scanner = new Scanner(System.in);
+            boolean exit = false;
+            while (!exit) {
+                System.out.println("\n--- Contacts Manager ---");
+                System.out.println("1. View All Contacts");
+                System.out.println("2. Add New Contact");
+                System.out.println("3. Search Contact by Name");
+                System.out.println("4. Delete an existing contact");
+                System.out.println("5. Exit");
+                System.out.println("Enter an option (1, 2, 3, 4 or 5):");
+                try {
+                    return scanner.nextInt();
+                } catch (InputMismatchException e) {
+                    scanner.next(); // discard the invalid input
+                    System.out.println("Invalid input. Please enter a number between 1 and 5.");
+                }
+            }
+            return -1;
+        }
+        private void deleteContact() {
+            System.out.println("\n---Delete Contact?---");
+            System.out.println("Enter name to delete: ");
+            Scanner scanner = new Scanner(System.in);
+            String name = scanner.nextLine();
+            System.out.println("Are you sure you want to delete" + name + "? (Yes/No)");
+            String confirmation = scanner.nextLine();
+            if (confirmation.equalsIgnoreCase("Yes")) {
+                Iterator<Contact> iterator = contacts.iterator();
+                while (iterator.hasNext()) {
+                    Contact contact = iterator.next();
+                    if (contact.getName().equalsIgnoreCase(name)) {
+                        iterator.remove();
+                        System.out.println("Bye Felicia.");
+                        return;
+                    }
+                }
+                System.out.println("Hmmm, not the droid you're looking for...");
+            } else {
+                System.out.println("Deletion cancelled.");
+            }
+        }
+
 }
