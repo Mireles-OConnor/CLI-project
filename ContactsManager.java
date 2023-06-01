@@ -131,7 +131,7 @@ while(!exit) {
     System.out.println("0. Exit");
 
     System.out.println("Enter your choice: ");
- mireles1
+
 
 
     System.out.println("Name: " + contact.getName());
@@ -139,6 +139,22 @@ while(!exit) {
 }else{
            System.out.println("Contact Not Found..");
        }
+
+private static void displayNamesandPhomeNumbers(contactList contactList){
+                System.out.println("\n---Names and Phone Numbers--");
+                if (contactList.isEmpty()) {
+                    System.out.println("No contacts found");
+                }else {
+                    System.out.println("Name        | Phone Numbers");
+                    System.out.println("-------------|--------------");
+                    for (Contact contact : contactList.getAllContacts()) {
+                        String formattedPhoneNumber = formatPhoneNumber(contact.getPhoneNumber)
+                        System.out.printf("%-20s | %s%n", contact.getName(), formattedPhoneNumber);
+                    }
+                }
+
+                }
+            }
 
 
     }
