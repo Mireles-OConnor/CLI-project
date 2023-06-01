@@ -3,9 +3,9 @@ public class ToDo {
 }
 //TODO We will be building a command line application for keeping track of "contacts". A contact will be comprised of a name and phone number combination.
 // The application should be able to:
-// Show all your contacts
-// Add a new contact
-// Search a contact by her name
+// Done: Show all your contacts
+// Done: Add a new contact
+// Done: Search a contact by her name
 // Delete an existing contact
 
 //TODO The application should keep its data in a file named contacts.txt so that the information persists between runs of the application.
@@ -28,14 +28,14 @@ public class ToDo {
 // Sam Space | 3453453456
 
 //TODO Here is what the code for your application might look like:
-// Load all of the contacts by calling a method that returns a List of Contact objects.
-// Call a method that shows the user the main menu and returns their choice of action.
+// Done: Load all of the contacts by calling a method that returns a List of Contact objects.
+// Done: Call a method that shows the user the main menu and returns their choice of action.
 // Using the user's choice from the previous step, call a method that performs that action (modifying the contents of the List of Contact objects if applicable).
 // Keep calling the method from step two until the user chooses to exit.
 // Once the user chooses to exit, re-write the contents of the contacts.txt file using the List of Contact objects.
 // Bonus
-// Format the phone numbers using dashes: instead of 8675309, your output should display 867-5309
-// Allow formatting phone numbers with different lengths. For example, phone numbers can have 10 or 7 digits. You can be even more creative here and allow international phone numbers.
-// Warn the user when she tries to enter a contact with an existing name.If the answer is No allow the user to enter the information again.
+// Done: Format the phone numbers using dashes: instead of 8675309, your output should display 867-5309
+// Done: Allow formatting phone numbers with different lengths. For example, phone numbers can have 10 or 7 digits. You can be even more creative here and allow international phone numbers.
+// Done: Warn the user when she tries to enter a contact with an existing name.If the answer is No allow the user to enter the information again.
 // Format the output of the contacts, so that all of the columns have the same width.
 // Hint: you can use format strings with the System.our.printf or String.format methods to ensure the columns have the same width.
