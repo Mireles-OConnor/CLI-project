@@ -3,21 +3,22 @@ import java.nio.file.*;
 import java.io.*;
 
 public class ContactsManager {
-    private static final String FILE_NAME = "contacts.txt";
-    private static final Path PATH = Paths.get(FILE_NAME);
-    private List<Contact> contacts;
+    private static final String FILE_NAME = "contacts.txt"; // File name where contacts are stored
+    private static final Path PATH = Paths.get(FILE_NAME); // Path to the file
+    private List<Contact> contacts; // List of Contact objects
+
 
     public ContactsManager() {
-        this.contacts = loadContacts();
+        this.contacts = loadContacts(); // Loading contacts from file during initialization
     }
 
     private List<Contact> loadContacts() {
         List<Contact> contacts = new ArrayList<>();
         try {
-            List<String> lines = Files.readAllLines(PATH);
-            for (String line : lines) {
-                String[] parts = line.split(" \\| ");
-                if (parts.length == 2) {
+            List<String> lines = Files.readAllLines(PATH); // Reading all lines from file
+            for (String line : lines) { // Iterating over each line
+                String[] parts = line.split(" \\| "); // Splitting line into parts
+                if (parts.length == 2) { // Valid contact should have two parts: name and phone number
                     String name = parts[0].trim();
                     String phoneNumber = formatPhoneNumber(parts[1].trim());
                     if (name.length() > 0 && phoneNumber != null) {
@@ -40,21 +41,13 @@ public class ContactsManager {
         do {
             option = showMenuOption();
             switch (option) {
-                case 1:
-                    showContacts();
-                    break;
-                case 2:
-                    addContact();
-                    break;
-                case 3:
-                    searchContact();
-                    break;
-                case 4:
-                    deleteContact();
-                    break;
+                case 1 -> showContacts();
+                case 2 -> addContact();
+                case 3 -> searchContact();
+                case 4 -> deleteContact();
             }
         } while (option != 5);
-        saveContacts();
+        saveContacts(); // Save contacts to file before exiting
     }
 
     private void addContact() {
@@ -67,7 +60,7 @@ public class ContactsManager {
             if (phoneNumber == null) {
                 System.out.println("Invalid phone number. Please enter a 7 or 10 digit number.");
                 continue;
-            }
+            } // Checking if contact already exists
             for (Contact contact : contacts) {
                 if (contact.getName().equalsIgnoreCase(name)) {
                     System.out.println("Negative Ghost Rider, the contact is full. Do you want to overwrite it? (Yes/No)");
@@ -101,20 +94,17 @@ public class ContactsManager {
                 return;
             }
         }
-        System.out.println("Contact not found.");
+        System.out.println("Hmmm, not the droid you're looking for...");
     }
 
     private String formatPhoneNumber(String number) {
         // Remove all non-digits
         number = number.replaceAll("\\D", "");
-        switch (number.length()) {
-            case 7:
-                return number.replaceAll("(\\d{3})(\\d{4})", "$1-$2");
-            case 10:
-                return number.replaceAll("(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3");
-            default:
-                return null;
-        }
+        return switch (number.length()) { // Format the phone number based on length
+            case 7 -> number.replaceAll("(\\d{3})(\\d{4})", "$1-$2");
+            case 10 -> number.replaceAll("(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3");
+            default -> null;
+        };
     }
 
     private void saveContacts() {
@@ -123,7 +113,7 @@ public class ContactsManager {
             lines.add(contact.toString());
         }
         try {
-            Files.write(PATH, lines);
+            Files.write(PATH, lines); // Writing all contacts to file
         } catch (IOException e) {
             System.out.println("Could not save contacts.");
         }
