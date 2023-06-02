@@ -94,7 +94,8 @@ public class ContactsManager {
                 return;
             }
         }
-        System.out.println("Hmmm, not the droid you're looking for...");
+        System.out.println("Hmmm, not the droid you're looking for..." );
+
     }
 
     private String formatPhoneNumber(String number) {
@@ -164,6 +165,21 @@ public class ContactsManager {
                     }
                 }
                 System.out.println("Hmmm, not the droid you're looking for...");
+                System.out.println("         _____\n" +
+                        "       .'/L|__`.\n" +
+                        "      / =[_]O|` \\\n" +
+                        "      |\"+_____\":|\n" +
+                        "    __:='|____`-:__\n" +
+                        "   ||[] ||====| []||\n" +
+                        "   ||[] | |=| | []||\n" +
+                        "   |:||_|=|U| |_||:|\n" +
+                        "   |:|||]_=_ =[_||:|\n" +
+                        "   | |||] [_][]C|| |\n" +
+                        "   | ||-'\"\"\"\"\"`-|| |\n" +
+                        "   /|\\\\_\\_|_|_/_//|\\\n" +
+                        "  |___|   /|\\   |___|\n" +
+                        "  `---'  |___|  `---'\n" +
+                        "         `---'\n");
             } else {
                 System.out.println("Deletion cancelled.");
             }
