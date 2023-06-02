@@ -40,9 +40,9 @@ public class ContactsManager {
         do {
             option = showMenuOption();
             switch (option) {
-//                case 1:
-//                    showContacts();
-//                    break;
+                case 1:
+                    showContacts();
+                    break;
                 case 2:
                     addContact();
                     break;
@@ -129,24 +129,13 @@ public class ContactsManager {
         }
     }
 
-private static void displayNamesandPhomeNumbers(contactList contactList){
-                System.out.println("\n---Names and Phone Numbers--");
-                if (contactList.isEmpty()) {
-                    System.out.println("No contacts found");
-                }else {
-                    System.out.println("Name        | Phone Numbers");
-                    System.out.println("-------------|--------------");
-                    for (Contact contact : contactList.getAllContacts()) {
-                        String formattedPhoneNumber = formatPhoneNumber(contact.getPhoneNumber)
-                        System.out.printf("%-20s | %s%n", contact.getName(), formattedPhoneNumber);
+        private void showContacts(){
+                    System.out.printf("%-20s | %s\n", "Name", "Phone number");
+                    System.out.println("---------------------|------");
+                    for (Contact contact : contacts) {
+                        System.out.printf("%-20s | %s\n", contact.getName(), contact.getPhoneNumber());
                     }
                 }
-
-                }
-            }
-
-
-    }
         private int showMenuOption() {
             Scanner scanner = new Scanner(System.in);
             boolean exit = false;
@@ -189,3 +178,4 @@ private static void displayNamesandPhomeNumbers(contactList contactList){
                 System.out.println("Deletion cancelled.");
             }
         }
+}
